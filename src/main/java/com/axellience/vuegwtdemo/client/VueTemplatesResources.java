@@ -14,9 +14,6 @@ public interface VueTemplatesResources extends ClientBundle
     @Source("components/simplecounter/SimpleCounterComponent.html")
     TextResource simpleCounter();
 
-    @Source("components/counterevolved/CounterEvolvedComponent.html")
-    TextResource counterEvolved();
-
     @Source("components/todolist/TodoListComponent.html")
     TextResource todoList();
 
