@@ -3,7 +3,7 @@
 		<input v-bind:id="_uid" type="checkbox" v-model="todo.isDone"/>
 		<label v-bind:for="_uid">{{ todo.text }}</label>
 
-		<a class="btn red right" @click="removeTodo">
+		<a class="btn red right" @click="removeTodo(todo)">
 			<i class="material-icons">delete</i>
 		</a>
 	</p>
