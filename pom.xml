@@ -68,10 +68,11 @@
                 <!-- Plugin configuration. There are many available options, see
                   gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
-                    <runTarget>VueGwtPlayground.html</runTarget>
+                    <runTarget>index.html</runTarget>
                     <modules>
-                        <module>com.axellience.vuegwtdemo.VueGwtPlayground</module>
+                        <module>com.axellience.vuegwtdemo.VueGwtDemo</module>
                     </modules>
+                    <generateJsInteropExports>true</generateJsInteropExports>
                 </configuration>
             </plugin>
         </plugins>
