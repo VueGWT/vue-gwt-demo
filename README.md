@@ -3,7 +3,8 @@
 Simple demo GWT app using [Vue GWT](https://github.com/Axellience/vue-gwt).
 
 :warning: Vue GWT is in an **experimental** state.
-Please be careful as it may contain bugs. :warning:
+The syntax is not final and might change between versions.
+It may also contains bugs. :warning:
 
 Vue GWT integrates [Vue.JS](https://vuejs.org/) with [GWT](http://www.gwtproject.org/) 2.8 using [JsInterop](https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/view).
 
