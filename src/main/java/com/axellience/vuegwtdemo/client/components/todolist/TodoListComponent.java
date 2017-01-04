@@ -18,8 +18,7 @@ public class TodoListComponent extends VueComponent
 
     public TodoListComponent()
     {
-        this.init("todo-list", TEMPLATES.todoList());
-
+        this.setTemplate(TEMPLATES.todoList());
         this.registerComponent(new TodoComponent());
     }
 

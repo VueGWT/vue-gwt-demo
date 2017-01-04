@@ -11,8 +11,8 @@ public interface VueTemplatesResources extends ClientBundle
 {
     VueTemplatesResources TEMPLATES = GWT.create(VueTemplatesResources.class);
 
-    @Source("components/simplecounter/SimpleCounterComponent.html")
-    TextResource simpleCounter();
+    @Source("components/counterwithtemplate/CounterWithTemplateComponent.html")
+    TextResource counterWithTemplate();
 
     @Source("components/todolist/TodoListComponent.html")
     TextResource todoList();

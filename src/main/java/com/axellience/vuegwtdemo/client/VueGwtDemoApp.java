@@ -1,8 +1,8 @@
 package com.axellience.vuegwtdemo.client;
 
-import com.axellience.vuegwt.client.jsnative.Vue;
-import com.axellience.vuegwtdemo.client.apps.SimpleCounterApp;
 import com.axellience.vuegwt.client.gwtextension.VueGwtPanel;
+import com.axellience.vuegwt.client.jsnative.Vue;
+import com.axellience.vuegwtdemo.client.components.counterwithtemplate.CounterWithTemplateComponent;
 import com.axellience.vuegwtdemo.client.components.simplecounter.SimpleCounterComponent;
 import com.axellience.vuegwtdemo.client.components.todolist.TodoListComponent;
 import com.google.gwt.core.client.EntryPoint;
@@ -22,12 +22,11 @@ public class VueGwtDemoApp implements EntryPoint
         StyleResources.STYLES.baseStyle().ensureInjected();
 
         // Create the simple counter app
-        Vue.app(new SimpleCounterApp());
+        Vue.attach("#simpleCounterApp", new SimpleCounterComponent());
 
-        // Create a simple GWT panel containing a SimpleCounterComponent
-        RootPanel.get("simpleCounterComponentContainer").add(new VueGwtPanel(new SimpleCounterComponent()));
+        // Create a simple GWT panel containing a CounterWithTemplateComponent
+        RootPanel.get("simpleCounterComponentContainer").add(new VueGwtPanel(new CounterWithTemplateComponent()));
 
-        // Create a simple GWT panel containing a TodoListComponent
-        RootPanel.get("todoListComponentContainer").add(new VueGwtPanel(new TodoListComponent()));
+        Vue.attach("#todoListComponentContainer", new TodoListComponent());
     }
 }

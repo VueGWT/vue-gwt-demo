@@ -15,7 +15,7 @@ public class TodoComponent extends VueComponent
 
     public TodoComponent()
     {
-        this.init("todo", TEMPLATES.todo());
+        this.setTemplate(TEMPLATES.todo());
         this.addProp("todo");
     }
 

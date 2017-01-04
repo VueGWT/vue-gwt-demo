@@ -55,7 +55,7 @@
 
     <div class="row">
         <div class="col s12">
-            <h4>Simple counter App</h4>
+            <h4>Simple counter component</h4>
             <p class="description">
                 Let's see what a simple counter app in Vue GWT looks like.
             </p>
@@ -71,7 +71,8 @@
             </div>
         </div>
         <div class="col s12 l6">
-            <pre><code class="html">&lt;div id=&quot;simpleCounterApp&quot;&gt;
+            <pre><code class="html">&lt;!-- index.html --&gt;
+&lt;div id=&quot;simpleCounterApp&quot;&gt;
     &lt;a class=&quot;btn orange&quot; @click=&quot;increaseCounter&quot;&gt;
         Press me!
     &lt;/a&gt;
@@ -80,14 +81,9 @@
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@JsType
-public class SimpleCounterApp extends VueApp
+public class SimpleCounterComponent extends VueComponent
 {
     public int counterValue = 0;
-
-    public SimpleCounterApp()
-    {
-        this.init("#simpleCounterApp");
-    }
 
     public void increaseCounter()
     {
@@ -99,21 +95,18 @@ public class SimpleCounterApp extends VueApp
 
     <div class="row">
         <div class="col s12">
-            <h4>Simple counter component</h4>
+            <h4>Counter component with template</h4>
             <p class="description">
-                Vue.JS has the notion of reusable components.
-                You can achieve this in Vue GWT pretty easily.
-            </p>
-            <p class="description">
-                Let's do the same counter, but as a reusable component.
-                Our component will be instantiable in any Vue.JS template using the &lt;simple-counter&gt;&lt;/simple-counter&gt; HTML tag.
+                Having the template in your index.html is not very convenient.
+                In Vue GWT you can put your component templates in a separate HTML file without problems.
             </p>
         </div>
         <div class="col s12 center">
             <div id="simpleCounterComponentContainer"></div>
         </div>
         <div class="col s12 l6">
-            <pre><code class="html">&lt;div&gt;
+            <pre><code class="html">&lt;!-- CounterWithTemplateComponent.html --&gt;
+&lt;div&gt;
     &lt;a class=&quot;btn orange&quot; @click=&quot;increaseCounter&quot;&gt;
         Press me!
     &lt;/a&gt;
@@ -127,13 +120,13 @@ public class SimpleCounterApp extends VueApp
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@JsType
-public class SimpleCounterComponent extends VueComponent
+public class CounterWithTemplateComponent extends VueComponent
 {
     public int counterValue = 0;
 
-    public SimpleCounterComponent()
+    public CounterWithTemplateComponent()
     {
-        this.init("simple-counter", TEMPLATES.simpleCounter());
+        this.setTemplate(TEMPLATES.counterWithTemplate());
     }
 
     public void increaseCounter()
@@ -146,6 +139,15 @@ public class SimpleCounterComponent extends VueComponent
         this.counterValue = 0;
     }
 }</code></pre>
+            <pre><code class="java">// Template is declared as a GWT resource
+public interface VueTemplatesResources extends ClientBundle
+{
+    VueTemplatesResources TEMPLATES = GWT.create(VueTemplatesResources.class);
+
+    @Source("components/counterwithtemplate/CounterWithTemplateComponent.html")
+    TextResource counterWithTemplate();
+}
+</code></pre>
         </div>
     </div>
 
@@ -197,7 +199,9 @@ public class TodoListComponent extends VueComponent
 
     public TodoListComponent()
     {
-        this.init("todo-list", TEMPLATES.todoList());
+        this.setTemplate(TEMPLATES.todoList());
+        // Register TodoComponent to be used in the template
+        // It will be accessible as a "todo" html element
         this.registerComponent(new TodoComponent());
     }
 
@@ -256,7 +260,7 @@ public class TodoComponent extends VueComponent
 
     public TodoComponent()
     {
-        this.init("todo", TEMPLATES.todo());
+        this.setTemplate(TEMPLATES.todo());
         this.addProp("todo");
     }
 

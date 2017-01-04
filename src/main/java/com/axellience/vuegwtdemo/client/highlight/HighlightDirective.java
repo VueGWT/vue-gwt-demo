@@ -7,11 +7,6 @@ import jsinterop.annotations.JsType;
 @JsType
 public class HighlightDirective extends VueDirective
 {
-    public HighlightDirective()
-    {
-        this.init("highlight");
-    }
-
     /**
      * When the component is created
      */
