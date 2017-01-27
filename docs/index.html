@@ -80,7 +80,8 @@
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
+            <pre><code class="java">@Component
+@JsType
 public class SimpleCounterComponent extends VueComponent
 {
     public int counterValue = 0;
@@ -99,6 +100,7 @@ public class SimpleCounterComponent extends VueComponent
             <p class="description">
                 Having the template in your index.html is not very convenient.
                 In Vue GWT you can put your component templates in a separate HTML file without problems.
+                Just put the HTML file next to your java class, and you are done!
             </p>
         </div>
         <div class="col s12 center">
@@ -119,15 +121,11 @@ public class SimpleCounterComponent extends VueComponent
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
+            <pre><code class="java">@Component
+@JsType
 public class CounterWithTemplateComponent extends VueComponent
 {
     public int counterValue = 0;
-
-    public CounterWithTemplateComponent()
-    {
-        this.setTemplate(TEMPLATES.counterWithTemplate());
-    }
 
     public void increaseCounter()
     {
@@ -139,15 +137,6 @@ public class CounterWithTemplateComponent extends VueComponent
         this.counterValue = 0;
     }
 }</code></pre>
-            <pre><code class="java">// Template is declared as a GWT resource
-public interface VueTemplatesResources extends ClientBundle
-{
-    VueTemplatesResources TEMPLATES = GWT.create(VueTemplatesResources.class);
-
-    @Source("components/counterwithtemplate/CounterWithTemplateComponent.html")
-    TextResource counterWithTemplate();
-}
-</code></pre>
         </div>
     </div>
 
@@ -191,19 +180,14 @@ public interface VueTemplatesResources extends ClientBundle
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
+            <pre><code class="java">// Register TodoComponent to be used in the template
+// It will be accessible as a "todo" html element
+@Component(components = {TodoComponent.class})
+@JsType
 public class TodoListComponent extends VueComponent
 {
     public JsArray&lt;Todo&gt; todos = new JsArray&lt;&gt;();
     public String newTodoText = "";
-
-    public TodoListComponent()
-    {
-        this.setTemplate(TEMPLATES.todoList());
-        // Register TodoComponent to be used in the template
-        // It will be accessible as a "todo" html element
-        this.registerComponent(new TodoComponent());
-    }
 
     public void addTodo() {
         this.todos.push(new Todo(this.newTodoText));
@@ -226,7 +210,8 @@ public class TodoListComponent extends VueComponent
      * Will be automatically called by Vue.JS to get the doneTodos value in your template
      * @return The number of todos that are done
      */
-    public int computed_doneTodos() {
+    @Computed
+    public int doneTodos() {
         int doneTodos = 0;
         for (Todo todo : this.todos.iterate())
         {
@@ -253,16 +238,11 @@ public class TodoListComponent extends VueComponent
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
+            <pre><code class="java">@Component(props = {"todo"})
+@JsType
 public class TodoComponent extends VueComponent
 {
     protected Todo todo;
-
-    public TodoComponent()
-    {
-        this.setTemplate(TEMPLATES.todo());
-        this.addProp("todo");
-    }
 
     /**
      * Emit an event when we want to delete the todo
@@ -303,7 +283,7 @@ public class Todo
         <div class="col s12">
             <pre>
                 <code class="java">
-VueGwtPanel vueGwtPanel = new VueGwtPanel(new TodoListComponent());
+VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
 RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
 </code></pre>
         </div>

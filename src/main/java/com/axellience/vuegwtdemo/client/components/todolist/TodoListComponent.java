@@ -2,25 +2,20 @@ package com.axellience.vuegwtdemo.client.components.todolist;
 
 import com.axellience.vuegwt.client.VueComponent;
 import com.axellience.vuegwt.client.jsnative.JsArray;
+import com.axellience.vuegwt.jsr69.annotations.Component;
+import com.axellience.vuegwt.jsr69.annotations.Computed;
 import jsinterop.annotations.JsType;
-
-import static com.axellience.vuegwtdemo.client.VueTemplatesResources.TEMPLATES;
 
 /**
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
+@Component(components = {TodoComponent.class})
 @JsType
 public class TodoListComponent extends VueComponent
 {
     public JsArray<Todo> todos = new JsArray<>();
     public String newTodoText = "";
-
-    public TodoListComponent()
-    {
-        this.setTemplate(TEMPLATES.todoList());
-        this.registerComponent(new TodoComponent());
-    }
 
     /**
      * Create a new todo
@@ -56,7 +51,8 @@ public class TodoListComponent extends VueComponent
      * Will be automatically called by Vue.JS to get the value of in your template doneTodos
      * @return The number of todos that are done
      */
-    public int computed_doneTodos() {
+    @Computed
+    public int doneTodos() {
         int doneTodos = 0;
         for (Todo todo : this.todos.iterate())
         {

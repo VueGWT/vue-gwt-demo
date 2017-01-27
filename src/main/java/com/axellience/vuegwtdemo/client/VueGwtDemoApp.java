@@ -22,11 +22,11 @@ public class VueGwtDemoApp implements EntryPoint
         StyleResources.STYLES.baseStyle().ensureInjected();
 
         // Create the simple counter app
-        Vue.attach("#simpleCounterApp", new SimpleCounterComponent());
+        Vue.attach("#simpleCounterApp", SimpleCounterComponent.class);
 
         // Create a simple GWT panel containing a CounterWithTemplateComponent
-        RootPanel.get("simpleCounterComponentContainer").add(new VueGwtPanel(new CounterWithTemplateComponent()));
+        RootPanel.get("simpleCounterComponentContainer").add(new VueGwtPanel(CounterWithTemplateComponent.class));
 
-        Vue.attach("#todoListComponentContainer", new TodoListComponent());
+        Vue.attach("#todoListComponentContainer", TodoListComponent.class);
     }
 }

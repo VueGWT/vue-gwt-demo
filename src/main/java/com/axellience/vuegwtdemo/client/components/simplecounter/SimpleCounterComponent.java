@@ -1,8 +1,10 @@
 package com.axellience.vuegwtdemo.client.components.simplecounter;
 
 import com.axellience.vuegwt.client.VueComponent;
+import com.axellience.vuegwt.jsr69.annotations.Component;
 import jsinterop.annotations.JsType;
 
+@Component
 @JsType
 public class SimpleCounterComponent extends VueComponent
 {
