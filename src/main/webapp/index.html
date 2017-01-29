@@ -238,11 +238,12 @@ public class TodoListComponent extends VueComponent
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@Component(props = {"todo"})
+            <pre><code class="java">@Component
 @JsType
 public class TodoComponent extends VueComponent
 {
-    protected Todo todo;
+    @Prop
+    public Todo todo;
 
     /**
      * Emit an event when we want to delete the todo

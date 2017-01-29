@@ -1,7 +1,7 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
 import com.axellience.vuegwt.client.VueComponent;
-import com.axellience.vuegwt.client.jsnative.JsArray;
+import com.axellience.vuegwt.client.jsnative.types.JsArray;
 import com.axellience.vuegwt.jsr69.annotations.Component;
 import com.axellience.vuegwt.jsr69.annotations.Computed;
 import jsinterop.annotations.JsType;
