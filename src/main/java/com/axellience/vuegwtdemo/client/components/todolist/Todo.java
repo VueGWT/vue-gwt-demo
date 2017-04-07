@@ -9,7 +9,7 @@ import jsinterop.annotations.JsType;
 public class Todo
 {
     public String text = "";
-    public Boolean isDone = false;
+    public boolean isDone = false;
 
     public Todo(String text)
     {

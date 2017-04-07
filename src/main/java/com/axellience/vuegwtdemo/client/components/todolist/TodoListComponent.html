@@ -2,11 +2,11 @@
 	<div class="col s12">
 		<input type="text" v-model="newTodoText" @keypress.enter="addTodo()">
 	</div>
-	<div class="col s12" v-show="todos.length">
-		<a class="btn red" @click="clearTodos">
+	<div class="col s12">
+		<a class="btn red" @click="clearTodos" v-show="!todos.isEmpty()">
 			Clear All
 		</a>
-		<a class="btn orange" @click="clearDoneTodos" v-show="doneTodos > 0">
+		<a class="btn orange" @click="clearDoneTodos" v-show="doneTodos() > 0">
 			Clear Done
 		</a>
 	</div>
