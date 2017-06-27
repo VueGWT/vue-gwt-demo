@@ -3,10 +3,10 @@
 		<input type="text" v-model="newTodoText" @keypress.enter="addTodo()">
 	</div>
 	<div class="col s12">
-		<a class="btn red" @click="clearTodos" v-show="!todos.isEmpty()">
+		<a class="btn red" @click="clearTodos()" v-show="todos != null && !todos.isEmpty()" :class="{'blue': 'todos.size() > 2'}">
 			Clear All
 		</a>
-		<a class="btn orange" @click="clearDoneTodos" v-show="doneTodos() > 0">
+		<a class="btn orange" @click="clearDoneTodos()" v-show="doneTodos() > 0">
 			Clear Done
 		</a>
 	</div>

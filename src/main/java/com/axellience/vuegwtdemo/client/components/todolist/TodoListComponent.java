@@ -3,6 +3,7 @@ package com.axellience.vuegwtdemo.client.components.todolist;
 import com.axellience.vuegwt.client.VueComponent;
 import com.axellience.vuegwt.jsr69.annotations.Component;
 import com.axellience.vuegwt.jsr69.annotations.Computed;
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
 
 import java.util.LinkedList;
@@ -66,6 +67,7 @@ public class TodoListComponent extends VueComponent
      * @return The number of todos that are done
      */
     @Computed
+    @JsMethod
     public int doneTodos()
     {
         if (this.todos == null)

@@ -55,47 +55,6 @@
 
     <div class="row">
         <div class="col s12">
-            <h4>Simple counter component</h4>
-            <p class="description">
-                Let's see what a simple counter app in Vue GWT looks like.
-            </p>
-        </div>
-        <div class="col s12 center">
-            <div id="simpleCounterApp">
-                <a class="btn orange" @click="increaseCounter">
-                    Press me!
-                </a>
-                <p>
-                    You pressed {{ counterValue }} times
-                </p>
-            </div>
-        </div>
-        <div class="col s12 l6">
-            <pre><code class="html">&lt;!-- index.html --&gt;
-&lt;div id=&quot;simpleCounterApp&quot;&gt;
-    &lt;a class=&quot;btn orange&quot; @click=&quot;increaseCounter&quot;&gt;
-        Press me!
-    &lt;/a&gt;
-    &lt;p&gt;You pressed {{ counterValue&nbsp;}} times&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-        <div class="col s12 l6">
-            <pre><code class="java">@Component
-@JsType
-public class SimpleCounterComponent extends VueComponent
-{
-    public int counterValue = 0;
-
-    public void increaseCounter()
-    {
-        this.counterValue++;
-    }
-}</code></pre>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12">
             <h4>Counter component with template</h4>
             <p class="description">
                 Having the template in your index.html is not very convenient.
