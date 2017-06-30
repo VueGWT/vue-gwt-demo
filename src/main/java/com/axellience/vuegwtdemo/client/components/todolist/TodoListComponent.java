@@ -1,14 +1,11 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
 import com.axellience.vuegwt.client.VueComponent;
-import com.axellience.vuegwt.jsr69.annotations.Component;
-import com.axellience.vuegwt.jsr69.annotations.Computed;
-import jsinterop.annotations.JsMethod;
+import com.axellience.vuegwt.client.jsnative.types.JsArray;
+import com.axellience.vuegwt.jsr69.component.annotations.Component;
+import com.axellience.vuegwt.jsr69.component.annotations.Computed;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A simple Todo list.
@@ -18,13 +15,14 @@ import java.util.stream.Collectors;
 @JsType
 public class TodoListComponent extends VueComponent
 {
-    public List<Todo> todos;
-    public String newTodoText = "";
+    @JsProperty protected JsArray<Todo> todos;
+    @JsProperty protected String newTodoText;
 
     @Override
     public void created()
     {
-        this.todos = new LinkedList<>();
+        this.todos = new JsArray<>();
+        this.newTodoText = "";
     }
 
     /**
@@ -32,7 +30,7 @@ public class TodoListComponent extends VueComponent
      */
     public void addTodo()
     {
-        this.todos.add(new Todo(this.newTodoText));
+        this.todos.push(new Todo(this.newTodoText));
         this.newTodoText = "";
     }
 
@@ -42,7 +40,7 @@ public class TodoListComponent extends VueComponent
      */
     public void removeTodo(Todo todo)
     {
-        this.todos.remove(todo);
+        this.todos.splice(this.todos.indexOf(todo), 1);
     }
 
     /**
@@ -50,7 +48,7 @@ public class TodoListComponent extends VueComponent
      */
     public void clearTodos()
     {
-        this.todos = new LinkedList<>();
+        this.todos = new JsArray<>();
     }
 
     /**
@@ -58,8 +56,11 @@ public class TodoListComponent extends VueComponent
      */
     public void clearDoneTodos()
     {
-        this.todos = this.todos.stream().filter(value -> !value.isDone).collect(
-            Collectors.toList());
+        JsArray<Todo> notDoneTodos = new JsArray<>();
+        for (Todo todo : this.todos.iterate())
+            if (!todo.isDone())
+                notDoneTodos.push(todo);
+        this.todos = notDoneTodos;
     }
 
     /**
@@ -67,16 +68,15 @@ public class TodoListComponent extends VueComponent
      * @return The number of todos that are done
      */
     @Computed
-    @JsMethod
     public int doneTodos()
     {
         if (this.todos == null)
             return 0;
 
         int doneTodos = 0;
-        for (Todo todo : this.todos)
+        for (Todo todo : this.todos.iterate())
         {
-            if (todo.isDone)
+            if (todo.isDone())
                 doneTodos++;
         }
         return doneTodos;

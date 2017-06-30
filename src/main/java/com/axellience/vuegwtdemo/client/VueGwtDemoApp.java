@@ -17,11 +17,10 @@ public class VueGwtDemoApp implements EntryPoint
      */
     public void onModuleLoad()
     {
-        // Inject styles
-        StyleResources.STYLES.baseStyle().ensureInjected();
-
         // Create a simple GWT panel containing a CounterWithTemplateComponent
-        RootPanel.get("simpleCounterComponentContainer").add(new VueGwtPanel(CounterWithTemplateComponent.class));
+        RootPanel
+            .get("simpleCounterComponentContainer")
+            .add(new VueGwtPanel(CounterWithTemplateComponent.class));
 
         Vue.attach("#todoListComponentContainer", TodoListComponent.class);
     }

@@ -1,8 +1,8 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
 import com.axellience.vuegwt.client.VueComponent;
-import com.axellience.vuegwt.jsr69.annotations.Component;
-import com.axellience.vuegwt.jsr69.annotations.Prop;
+import com.axellience.vuegwt.jsr69.component.annotations.Component;
+import com.axellience.vuegwt.jsr69.component.annotations.Prop;
 import jsinterop.annotations.JsType;
 
 /**
@@ -12,13 +12,19 @@ import jsinterop.annotations.JsType;
 @JsType
 public class TodoComponent extends VueComponent
 {
-    @Prop
-    public Todo todo;
+    @Prop public Todo todo;
+
+    @Override
+    public void created()
+    {
+
+    }
 
     /**
      * Emit an event when we want to delete the todo
      */
-    public void removeTodo() {
+    public void removeTodo()
+    {
         this.$emit("removeTodo");
     }
 }

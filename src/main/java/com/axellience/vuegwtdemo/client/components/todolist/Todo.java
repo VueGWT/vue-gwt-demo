@@ -1,18 +1,35 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
-import jsinterop.annotations.JsType;
-
 /**
  * Simple Todo model
  */
-@JsType
 public class Todo
 {
-    public String text = "";
-    public boolean isDone = false;
+    private String text = "";
+    private boolean isDone = false;
 
     public Todo(String text)
     {
         this.text = text;
+    }
+
+    public String getText()
+    {
+        return text;
+    }
+
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+
+    public boolean isDone()
+    {
+        return isDone;
+    }
+
+    public void setDone(boolean done)
+    {
+        isDone = done;
     }
 }
