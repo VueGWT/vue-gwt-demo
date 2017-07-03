@@ -1,9 +1,9 @@
 <div>
 	<p v-bind:class="{ 'isDone': 'todo.isDone()' }">
-		<input v-bind:id="_uid"
-			   type="checkbox"
+		<input type="checkbox"
 			   :checked="todo.isDone()"
-			   @click="todo.setDone(!todo.isDone())"/>
+			   @click="todo.setDone(!todo.isDone())"
+			   v-bind:id="_uid"/>
 		<label v-bind:for="_uid">{{ todo.getText() }}</label>
 
 		<a class="btn red right" @click="removeTodo()">

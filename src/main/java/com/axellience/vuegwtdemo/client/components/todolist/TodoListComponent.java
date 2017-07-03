@@ -25,35 +25,22 @@ public class TodoListComponent extends VueComponent
         this.newTodoText = "";
     }
 
-    /**
-     * Create a new todo
-     */
     public void addTodo()
     {
         this.todos.push(new Todo(this.newTodoText));
         this.newTodoText = "";
     }
 
-    /**
-     * Remove the given todo
-     * @param todo
-     */
     public void removeTodo(Todo todo)
     {
         this.todos.splice(this.todos.indexOf(todo), 1);
     }
 
-    /**
-     * Remove all the todos
-     */
     public void clearTodos()
     {
         this.todos = new JsArray<>();
     }
 
-    /**
-     * Remove only the todos that have been done
-     */
     public void clearDoneTodos()
     {
         JsArray<Todo> notDoneTodos = new JsArray<>();
@@ -64,7 +51,8 @@ public class TodoListComponent extends VueComponent
     }
 
     /**
-     * Will be automatically called by Vue.JS to get the value of in your template doneTodos
+     * Will be automatically called by Vue.js to
+     * get the value of doneTodos in the template
      * @return The number of todos that are done
      */
     @Computed

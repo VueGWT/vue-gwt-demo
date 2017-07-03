@@ -5,12 +5,13 @@ package com.axellience.vuegwtdemo.client.components.todolist;
  */
 public class Todo
 {
-    private String text = "";
-    private boolean isDone = false;
+    private String text;
+    private boolean isDone;
 
     public Todo(String text)
     {
         this.text = text;
+        this.isDone = false;
     }
 
     public String getText()

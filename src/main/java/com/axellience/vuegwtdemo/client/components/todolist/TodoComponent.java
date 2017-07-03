@@ -8,8 +8,8 @@ import jsinterop.annotations.JsType;
 /**
  * Display a Todo
  */
-@Component
 @JsType
+@Component
 public class TodoComponent extends VueComponent
 {
     @Prop public Todo todo;
@@ -25,6 +25,6 @@ public class TodoComponent extends VueComponent
      */
     public void removeTodo()
     {
-        this.$emit("removeTodo");
+        this.$emit("removeTodo", todo);
     }
 }
