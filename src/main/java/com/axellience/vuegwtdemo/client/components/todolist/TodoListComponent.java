@@ -11,12 +11,14 @@ import jsinterop.annotations.JsType;
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
-@Component(components = { TodoComponent.class })
 @JsType
+@Component(components = { TodoComponent.class })
 public class TodoListComponent extends VueComponent
 {
-    @JsProperty protected JsArray<Todo> todos;
-    @JsProperty protected String newTodoText;
+    @JsProperty
+    protected JsArray<Todo> todos;
+    @JsProperty
+    protected String newTodoText;
 
     @Override
     public void created()

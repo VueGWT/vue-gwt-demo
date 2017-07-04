@@ -1,13 +1,13 @@
 <div>
-	<p v-bind:class="{ 'isDone': 'todo.isDone()' }">
-		<input type="checkbox"
-			   :checked="todo.isDone()"
-			   @click="todo.setDone(!todo.isDone())"
-			   v-bind:id="_uid"/>
-		<label v-bind:for="_uid">{{ todo.getText() }}</label>
+    <p v-bind:class="{ 'isDone': 'todo.isDone()' }">
+        <input type="checkbox"
+               :checked="todo.isDone()"
+               @click="todo.setDone(!todo.isDone())"
+               v-bind:id="_uid"/>
+        <label v-bind:for="_uid">{{ todo.getText() }}</label>
 
-		<a class="btn red right" @click="removeTodo()">
-			<i class="material-icons">delete</i>
-		</a>
-	</p>
+        <button class="btn red right" @click="removeTodo()">
+            <i class="material-icons">delete</i>
+        </button>
+    </p>
 </div>
