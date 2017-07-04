@@ -20,7 +20,7 @@ public class VueGwtDemoApp implements EntryPoint
         // Create a simple GWT panel containing a CounterWithTemplateComponent
         RootPanel
             .get("simpleCounterComponentContainer")
-            .add(new VueGwtPanel(CounterWithTemplateComponent.class));
+            .add(new VueGwtPanel<>(CounterWithTemplateComponent.class));
 
         Vue.attach("#todoListComponentContainer", TodoListComponent.class);
     }
