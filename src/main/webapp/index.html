@@ -180,11 +180,7 @@ public class TodoListComponent extends VueComponent
     }
 
     public void clearDoneTodos() {
-        JsArray<Todo> notDoneTodos = new JsArray<>();
-        for (Todo todo : this.todos.iterate())
-            if (!todo.isDone())
-                notDoneTodos.push(todo);
-        this.todos = notDoneTodos;
+        this.todos = this.todos.filter(todo -> !todo.isDone());
     }
 
     @Computed
@@ -192,13 +188,7 @@ public class TodoListComponent extends VueComponent
         if (this.todos == null)
             return 0;
 
-        int doneTodos = 0;
-        for (Todo todo : this.todos.iterate())
-        {
-            if (todo.isDone())
-                doneTodos++;
-        }
-        return doneTodos;
+        return this.todos.reduce((counter, todo) -> todo.isDone() ? counter + 1 : counter, 0);
     }
 }
 </code></pre>

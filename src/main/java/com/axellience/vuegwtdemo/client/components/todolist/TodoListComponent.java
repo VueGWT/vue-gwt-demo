@@ -15,10 +15,8 @@ import jsinterop.annotations.JsType;
 @Component(components = { TodoComponent.class })
 public class TodoListComponent extends VueComponent
 {
-    @JsProperty
-    protected JsArray<Todo> todos;
-    @JsProperty
-    protected String newTodoText;
+    @JsProperty protected JsArray<Todo> todos;
+    @JsProperty protected String newTodoText;
 
     @Override
     public void created()
@@ -45,11 +43,7 @@ public class TodoListComponent extends VueComponent
 
     public void clearDoneTodos()
     {
-        JsArray<Todo> notDoneTodos = new JsArray<>();
-        for (Todo todo : this.todos.iterate())
-            if (!todo.isDone())
-                notDoneTodos.push(todo);
-        this.todos = notDoneTodos;
+        this.todos = this.todos.filter(todo -> !todo.isDone());
     }
 
     /**
@@ -63,12 +57,6 @@ public class TodoListComponent extends VueComponent
         if (this.todos == null)
             return 0;
 
-        int doneTodos = 0;
-        for (Todo todo : this.todos.iterate())
-        {
-            if (todo.isDone())
-                doneTodos++;
-        }
-        return doneTodos;
+        return this.todos.reduce((counter, todo) -> todo.isDone() ? counter + 1 : counter, 0);
     }
 }
