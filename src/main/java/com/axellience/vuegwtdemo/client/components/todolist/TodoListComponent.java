@@ -52,7 +52,7 @@ public class TodoListComponent extends VueComponent
      * @return The number of todos that are done
      */
     @Computed
-    public int doneTodos()
+    public int getDoneTodos()
     {
         if (this.todos == null)
             return 0;
