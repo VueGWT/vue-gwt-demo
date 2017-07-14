@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
-import com.axellience.vuegwt.client.VueComponent;
+import com.axellience.vuegwt.client.component.VueComponent;
 import com.axellience.vuegwt.jsr69.component.annotations.Component;
 import com.axellience.vuegwt.jsr69.component.annotations.Prop;
 import jsinterop.annotations.JsProperty;

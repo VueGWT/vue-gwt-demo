@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.components.counter;
 
-import com.axellience.vuegwt.client.VueComponent;
+import com.axellience.vuegwt.client.component.VueComponent;
 import com.axellience.vuegwt.jsr69.component.annotations.Component;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;

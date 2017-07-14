@@ -1,7 +1,7 @@
 package com.axellience.vuegwtdemo.client;
 
-import com.axellience.vuegwt.client.gwtextension.VueGwtPanel;
-import com.axellience.vuegwt.client.jsnative.Vue;
+import com.axellience.vuegwt.client.gwtpanel.VueGwtPanel;
+import com.axellience.vuegwt.client.Vue;
 import com.axellience.vuegwtdemo.client.components.counter.CounterComponent;
 import com.axellience.vuegwtdemo.client.components.todolist.TodoListComponent;
 import com.google.gwt.core.client.EntryPoint;
