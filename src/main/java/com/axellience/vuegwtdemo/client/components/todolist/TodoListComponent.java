@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
-import com.axellience.vuegwt.client.component.VueComponent;
+import com.axellience.vuegwt.client.Vue;
 import com.axellience.vuegwt.client.jsnative.jstypes.JsArray;
 import com.axellience.vuegwt.jsr69.component.annotations.Component;
 import com.axellience.vuegwt.jsr69.component.annotations.Computed;
@@ -13,7 +13,7 @@ import jsinterop.annotations.JsType;
  */
 @JsType
 @Component(components = { TodoComponent.class })
-public class TodoListComponent extends VueComponent
+public class TodoListComponent extends Vue
 {
     @JsProperty protected JsArray<Todo> todos;
     @JsProperty protected String newTodoText;
