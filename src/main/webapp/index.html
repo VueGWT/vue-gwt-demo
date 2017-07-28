@@ -138,8 +138,7 @@ public class CounterComponent extends VueComponent {
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">
-/**
+            <pre><code class="java">/**
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
@@ -199,8 +198,7 @@ public class TodoListComponent extends VueComponent {
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@Component
-public class TodoComponent extends VueComponent
-{
+public class TodoComponent extends VueComponent {
     @Prop
     @JsProperty
     Todo todo;
@@ -222,8 +220,7 @@ public class TodoComponent extends VueComponent
         this.todo.setDone(isDone);
     }
 }</code></pre>
-            <pre><code class="java">public class Todo
-{
+            <pre><code class="java">public class Todo {
     private String text;
     private boolean isDone;
 
@@ -269,8 +266,7 @@ public class TodoComponent extends VueComponent
         </div>
         <div class="col s12">
             <pre>
-                <code class="java">
-VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
+                <code class="java">VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
 RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
 </code></pre>
         </div>
