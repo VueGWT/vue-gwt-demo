@@ -10,9 +10,6 @@
             language="javascript"
             src="VueGwtDemo/VueGwtDemo.nocache.js"></script>
 
-    <!-- Vue JS Framework -->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-
     <!-- Materialize CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"
@@ -85,16 +82,11 @@
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
-@Component
-public class CounterComponent extends VueComponent
-{
-    @JsProperty
-    protected int counterValue;
+            <pre><code class="java">@Component
+public class CounterComponent extends VueComponent {
+    @JsProperty int counterValue;
 
-    @Override
-    public void created()
-    {
+    public CounterComponent() {
         this.counterValue = 0;
     }
 }</code></pre>
@@ -129,7 +121,7 @@ public class CounterComponent extends VueComponent
     &lt;div class=&quot;col s12&quot;&gt;
         &lt;button class=&quot;btn red&quot;
                 @click=&quot;clearTodos()&quot;
-                v-show=&quot;todos != null &amp;&amp; todos.length &gt; 0&quot;&gt;
+                v-show=&quot;todos != null &amp;&amp; todos.isEmpty() &gt; 0&quot;&gt;
             Clear All
         &lt;/button&gt;
         &lt;button class=&quot;btn orange&quot;
@@ -151,47 +143,42 @@ public class CounterComponent extends VueComponent
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
-@JsType
 @Component(components = { TodoComponent.class })
-public class TodoListComponent extends VueComponent
-{
-    @JsProperty
-    protected JsArray<Todo> todos;
-    @JsProperty
-    protected String newTodoText;
+public class TodoListComponent extends VueComponent {
+    @JsProperty List<Todo> todos;
+    @JsProperty String newTodoText;
 
-    @Override
-    public void created() {
-        this.todos = new JsArray<>();
+    public TodoListComponent() {
+        this.todos = new LinkedList<>();
         this.newTodoText = "";
     }
 
     public void addTodo() {
-        this.todos.push(new Todo(this.newTodoText));
+        this.todos.add(new Todo(this.newTodoText));
         this.newTodoText = "";
     }
 
     public void removeTodo(Todo todo) {
-        this.todos.splice(this.todos.indexOf(todo), 1);
+        this.todos.remove(todo);
     }
 
     public void clearTodos() {
-        this.todos = new JsArray<>();
+        this.todos.clear();
     }
 
     public void clearDoneTodos() {
-        this.todos = this.todos.filter(todo -> !todo.isDone());
+        this.todos =
+            this.todos.stream().filter(todo -> !todo.isDone()).collect(Collectors.toList());
     }
 
     @Computed
-    public int getDoneTodos() {
+    public long getDoneTodos() {
         if (this.todos == null)
             return 0;
 
-        return this.todos.reduce((counter, todo) -> todo.isDone() ? counter + 1 : counter, 0);
+        return this.todos.stream().filter(Todo::isDone).count();
     }
-}
-</code></pre>
+}</code></pre>
         </div>
         <div class="col s12">
             <h5>TodoComponent</h5>
@@ -200,8 +187,7 @@ public class TodoListComponent extends VueComponent
             <pre><code class="html">&lt;div&gt;
     &lt;p v-bind:class=&quot;{ 'isDone': 'todo.isDone()' }&quot;&gt;
         &lt;input type=&quot;checkbox&quot;
-               :checked=&quot;todo.isDone()&quot;
-               @click=&quot;todo.setDone(!todo.isDone())&quot;
+               v-model=&quot;isDoneTodo&quot;
                v-bind:id=&quot;_uid&quot;/&gt;
         &lt;label v-bind:for=&quot;_uid&quot;&gt;{{ todo.getText() }}&lt;/label&gt;
 
@@ -212,23 +198,28 @@ public class TodoListComponent extends VueComponent
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">@JsType
-@Component
+            <pre><code class="java">@Component
 public class TodoComponent extends VueComponent
 {
-    @JsProperty
     @Prop
-    protected Todo todo;
-
-    @Override
-    public void created() {}
+    @JsProperty
+    Todo todo;
 
     /**
      * Emit an event when we want to delete the todo
      */
-    public void removeTodo()
-    {
+    public void removeTodo() {
         this.$emit("removeTodo", todo);
+    }
+
+    @Computed
+    public boolean getIsTodoDone() {
+        return this.todo.isDone();
+    }
+
+    @Computed
+    public void setIsTodoDone(boolean isDone) {
+        this.todo.setDone(isDone);
     }
 }</code></pre>
             <pre><code class="java">public class Todo

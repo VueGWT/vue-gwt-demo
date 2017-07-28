@@ -1,19 +1,15 @@
 package com.axellience.vuegwtdemo.client.components.counter;
 
-import com.axellience.vuegwt.client.Vue;
+import com.axellience.vuegwt.client.component.VueComponent;
 import com.axellience.vuegwt.jsr69.component.annotations.Component;
 import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
 
-@JsType
 @Component
-public class CounterComponent extends Vue
+public class CounterComponent extends VueComponent
 {
-    @JsProperty
-    protected int counterValue;
+    @JsProperty int counterValue;
 
-    @Override
-    public void created()
+    public CounterComponent()
     {
         this.counterValue = 0;
     }

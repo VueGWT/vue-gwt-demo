@@ -1,8 +1,7 @@
 <div>
     <p v-bind:class="{ 'isDone': 'todo.isDone()' }">
         <input type="checkbox"
-               :checked="todo.isDone()"
-               @click="todo.setDone(!todo.isDone())"
+               v-model="isDoneTodo"
                v-bind:id="_uid"/>
         <label v-bind:for="_uid">{{ todo.getText() }}</label>
 
