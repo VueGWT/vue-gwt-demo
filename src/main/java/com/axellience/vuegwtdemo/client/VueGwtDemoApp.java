@@ -1,8 +1,8 @@
 package com.axellience.vuegwtdemo.client;
 
 import com.axellience.vuegwt.client.Vue;
+import com.axellience.vuegwt.client.VueGWT;
 import com.axellience.vuegwt.client.gwtpanel.VueGwtPanel;
-import com.axellience.vuegwt.client.resources.VueLib;
 import com.axellience.vuegwtdemo.client.components.counter.CounterComponent;
 import com.axellience.vuegwtdemo.client.components.todolist.TodoListComponent;
 import com.google.gwt.core.client.EntryPoint;
@@ -18,7 +18,7 @@ public class VueGwtDemoApp implements EntryPoint
      */
     public void onModuleLoad()
     {
-        VueLib.inject();
+        VueGWT.initWithVueLib();
 
         // Create a simple GWT panel containing a CounterWithTemplateComponent
         RootPanel
