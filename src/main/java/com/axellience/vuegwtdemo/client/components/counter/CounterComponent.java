@@ -9,7 +9,8 @@ public class CounterComponent extends VueComponent
 {
     @JsProperty int counterValue;
 
-    public CounterComponent()
+    @Override
+    public void created()
     {
         this.counterValue = 0;
     }

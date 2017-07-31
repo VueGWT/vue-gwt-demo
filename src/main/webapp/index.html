@@ -86,7 +86,8 @@
 public class CounterComponent extends VueComponent {
     @JsProperty int counterValue;
 
-    public CounterComponent() {
+    @Override
+    public void created() {
         this.counterValue = 0;
     }
 }</code></pre>
@@ -147,7 +148,8 @@ public class TodoListComponent extends VueComponent {
     @JsProperty List<Todo> todos;
     @JsProperty String newTodoText;
 
-    public TodoListComponent() {
+    @Override
+    public void created() {
         this.todos = new LinkedList<>();
         this.newTodoText = "";
     }
@@ -202,6 +204,9 @@ public class TodoComponent extends VueComponent {
     @Prop
     @JsProperty
     Todo todo;
+
+    @Override
+    public void created() {}
 
     /**
      * Emit an event when we want to delete the todo

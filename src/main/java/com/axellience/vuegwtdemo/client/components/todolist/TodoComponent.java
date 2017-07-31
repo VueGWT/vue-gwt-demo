@@ -16,6 +16,12 @@ public class TodoComponent extends VueComponent
     @JsProperty
     Todo todo;
 
+    @Override
+    public void created()
+    {
+
+    }
+
     /**
      * Emit an event when we want to delete the todo
      */

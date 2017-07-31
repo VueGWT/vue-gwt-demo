@@ -86,7 +86,8 @@
 public class CounterComponent extends VueComponent {
     @JsProperty int counterValue;
 
-    public CounterComponent() {
+    @Override
+    public void created() {
         this.counterValue = 0;
     }
 }</code></pre>
@@ -138,8 +139,7 @@ public class CounterComponent extends VueComponent {
 &lt;/div&gt;</code></pre>
         </div>
         <div class="col s12 l6">
-            <pre><code class="java">
-/**
+            <pre><code class="java">/**
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
@@ -148,7 +148,8 @@ public class TodoListComponent extends VueComponent {
     @JsProperty List<Todo> todos;
     @JsProperty String newTodoText;
 
-    public TodoListComponent() {
+    @Override
+    public void created() {
         this.todos = new LinkedList<>();
         this.newTodoText = "";
     }
@@ -199,11 +200,13 @@ public class TodoListComponent extends VueComponent {
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@Component
-public class TodoComponent extends VueComponent
-{
+public class TodoComponent extends VueComponent {
     @Prop
     @JsProperty
     Todo todo;
+
+    @Override
+    public void created() {}
 
     /**
      * Emit an event when we want to delete the todo
@@ -222,8 +225,7 @@ public class TodoComponent extends VueComponent
         this.todo.setDone(isDone);
     }
 }</code></pre>
-            <pre><code class="java">public class Todo
-{
+            <pre><code class="java">public class Todo {
     private String text;
     private boolean isDone;
 
@@ -269,8 +271,7 @@ public class TodoComponent extends VueComponent
         </div>
         <div class="col s12">
             <pre>
-                <code class="java">
-VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
+                <code class="java">VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
 RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
 </code></pre>
         </div>
