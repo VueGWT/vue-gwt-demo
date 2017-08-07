@@ -16,15 +16,8 @@ import java.util.stream.Collectors;
 @Component(components = { TodoComponent.class })
 public class TodoListComponent extends VueComponent
 {
-    @JsProperty List<Todo> todos;
-    @JsProperty String newTodoText;
-
-    @Override
-    public void created()
-    {
-        this.todos = new LinkedList<>();
-        this.newTodoText = "";
-    }
+    @JsProperty List<Todo> todos = new LinkedList<>();
+    @JsProperty String newTodoText = "";
 
     public void addTodo()
     {
