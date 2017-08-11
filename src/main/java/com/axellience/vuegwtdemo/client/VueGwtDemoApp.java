@@ -20,7 +20,7 @@ public class VueGwtDemoApp implements EntryPoint
     {
         VueGWT.initWithVueLib();
 
-        // Create a simple GWT panel containing a CounterWithTemplateComponent
+        // Create a simple GWT panel containing a CounterComponent
         RootPanel
             .get("simpleCounterComponentContainer")
             .add(new VueGwtPanel<>(CounterComponent.class));
