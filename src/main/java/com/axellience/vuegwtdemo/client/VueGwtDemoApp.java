@@ -18,7 +18,7 @@ public class VueGwtDemoApp implements EntryPoint
      */
     public void onModuleLoad()
     {
-        VueGWT.initWithVueLib();
+        VueGWT.init();
 
         // Create a simple GWT panel containing a CounterComponent
         RootPanel
