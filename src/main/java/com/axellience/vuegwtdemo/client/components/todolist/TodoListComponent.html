@@ -3,23 +3,21 @@
     <div class="col s12">
         <input type="text"
                v-model="newTodoText"
-               @keypress.enter="addTodo()">
+               @keypress.enter="addTodo"/>
     </div>
     <div class="col s12">
         <button class="btn red"
-                @click="clearTodos()"
+                @click="clearTodos"
                 v-show="todos != null && !todos.isEmpty()">
             Clear All
         </button>
         <button class="btn orange"
-                @click="clearDoneTodos()"
+                @click="clearDoneTodos"
                 v-show="doneTodos > 0">
             Clear Done
         </button>
     </div>
     <div class="col s12" v-for="Todo todo in todos">
-        <todo v-bind:todo="todo"
-              @removeTodo="removeTodo((Todo) $event)">
-        </todo>
+        <todo v-bind:todo="todo" @removeTodo="removeTodo"/>
     </div>
 </div>

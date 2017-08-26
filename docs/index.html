@@ -84,12 +84,7 @@
         <div class="col s12 l6">
             <pre><code class="java">@Component
 public class CounterComponent extends VueComponent {
-    @JsProperty int counterValue;
-
-    @Override
-    public void created() {
-        this.counterValue = 0;
-    }
+    @JsProperty int counterValue = 0;
 }</code></pre>
         </div>
     </div>
@@ -117,24 +112,22 @@ public class CounterComponent extends VueComponent {
     &lt;div class=&quot;col s12&quot;&gt;
         &lt;input type=&quot;text&quot;
                v-model=&quot;newTodoText&quot;
-               @keypress.enter=&quot;addTodo()&quot;&gt;
+               @keypress.enter=&quot;addTodo&quot;/&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col s12&quot;&gt;
         &lt;button class=&quot;btn red&quot;
-                @click=&quot;clearTodos()&quot;
-                v-show=&quot;todos != null &amp;&amp; todos.isEmpty() &gt; 0&quot;&gt;
+                @click=&quot;clearTodos&quot;
+                v-show=&quot;todos != null &amp;&amp; !todos.isEmpty()&quot;&gt;
             Clear All
         &lt;/button&gt;
         &lt;button class=&quot;btn orange&quot;
-                @click=&quot;clearDoneTodos()&quot;
+                @click=&quot;clearDoneTodos&quot;
                 v-show=&quot;doneTodos &gt; 0&quot;&gt;
             Clear Done
         &lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col s12&quot; v-for=&quot;Todo todo in todos&quot;&gt;
-        &lt;todo v-bind:todo=&quot;todo&quot;
-              @removeTodo=&quot;removeTodo((Todo) $event)&quot;&gt;
-        &lt;/todo&gt;
+        &lt;todo v-bind:todo=&quot;todo&quot; @removeTodo=&quot;removeTodo&quot;/&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
         </div>
@@ -145,14 +138,8 @@ public class CounterComponent extends VueComponent {
  */
 @Component(components = { TodoComponent.class })
 public class TodoListComponent extends VueComponent {
-    @JsProperty List<Todo> todos;
-    @JsProperty String newTodoText;
-
-    @Override
-    public void created() {
-        this.todos = new LinkedList<>();
-        this.newTodoText = "";
-    }
+    @JsProperty List<Todo> todos = new LinkedList<>();
+    @JsProperty String newTodoText = "";
 
     public void addTodo() {
         this.todos.add(new Todo(this.newTodoText));
@@ -186,13 +173,13 @@ public class TodoListComponent extends VueComponent {
         </div>
         <div class="col s12 l6">
             <pre><code class="html">&lt;div&gt;
-    &lt;p v-bind:class=&quot;{ 'isDone': 'todo.isDone()' }&quot;&gt;
+    &lt;p v-bind:class='map(&quot;isDone&quot;, todo.isDone())'&gt;
         &lt;input type=&quot;checkbox&quot;
                v-model=&quot;isDoneTodo&quot;
                v-bind:id=&quot;_uid&quot;/&gt;
         &lt;label v-bind:for=&quot;_uid&quot;&gt;{{ todo.getText() }}&lt;/label&gt;
 
-        &lt;button class=&quot;btn red right&quot; @click=&quot;removeTodo()&quot;&gt;
+        &lt;button class=&quot;btn red right&quot; @click=&quot;removeTodo&quot;&gt;
             &lt;i class=&quot;material-icons&quot;&gt;delete&lt;/i&gt;
         &lt;/button&gt;
     &lt;/p&gt;
@@ -204,9 +191,6 @@ public class TodoComponent extends VueComponent {
     @Prop
     @JsProperty
     Todo todo;
-
-    @Override
-    public void created() {}
 
     /**
      * Emit an event when we want to delete the todo

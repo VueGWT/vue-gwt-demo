@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * A simple Todo list.
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
-@Component(components = { TodoComponent.class })
+@Component(components = TodoComponent.class)
 public class TodoListComponent extends VueComponent
 {
     @JsProperty List<Todo> todos = new LinkedList<>();
