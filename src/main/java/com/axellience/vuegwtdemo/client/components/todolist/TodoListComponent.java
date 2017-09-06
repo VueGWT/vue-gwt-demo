@@ -3,6 +3,7 @@ package com.axellience.vuegwtdemo.client.components.todolist;
 import com.axellience.vuegwt.client.component.VueComponent;
 import com.axellience.vuegwt.jsr69.component.annotations.Component;
 import com.axellience.vuegwt.jsr69.component.annotations.Computed;
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsProperty;
 
 import java.util.LinkedList;
@@ -19,22 +20,26 @@ public class TodoListComponent extends VueComponent
     @JsProperty List<Todo> todos = new LinkedList<>();
     @JsProperty String newTodoText = "";
 
+    @JsMethod
     public void addTodo()
     {
         this.todos.add(new Todo(this.newTodoText));
         this.newTodoText = "";
     }
 
+    @JsMethod
     public void removeTodo(Todo todo)
     {
         this.todos.remove(todo);
     }
 
+    @JsMethod
     public void clearTodos()
     {
         this.todos.clear();
     }
 
+    @JsMethod
     public void clearDoneTodos()
     {
         this.todos =
