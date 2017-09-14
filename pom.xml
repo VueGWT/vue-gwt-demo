@@ -8,14 +8,14 @@
     <groupId>com.axellience</groupId>
     <artifactId>vue-gwt-demo</artifactId>
     <packaging>war</packaging>
-    <version>1.0-beta-1</version>
+    <version>1.0-beta-2</version>
     <name>Vue GWT demo project</name>
 
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.8.0</gwtVersion>
 
-        <vue-gwt.version>1.0-beta-1</vue-gwt.version>
+        <vue-gwt.version>1.0-beta-2</vue-gwt.version>
 
         <!-- GWT needs at least java 1.7 -->
         <maven.compiler.source>1.8</maven.compiler.source>
