@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.highlight;
 
-import com.axellience.vuegwt.client.directive.VueDirective;
+import com.axellience.vuegwt.core.client.directive.VueDirective;
 import com.google.gwt.dom.client.Element;
 import jsinterop.annotations.JsType;
 
