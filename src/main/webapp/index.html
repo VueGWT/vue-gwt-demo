@@ -247,7 +247,7 @@ public class TodoComponent extends VueComponent {
         <div class="col s12">
             <h4>Backward compatibility with GWT User</h4>
             <p class="description">
-                To avoid having to rewrite your whole application, you can easily instantiate Vue GWT components in a GWT user Panel.
+                To avoid having to rewrite your whole application, you can easily instantiate Vue GWT components in a GWT user Widget.
                 This let you write some part of you app as Vue GWT components and attach them to your current application.
                 When you decide rewrite more of your application, you can just use these components in your Vue App without having to rewrite anything.
                 <br>
@@ -260,7 +260,7 @@ public class TodoComponent extends VueComponent {
         </div>
         <div class="col s12">
             <pre>
-                <code class="java">VueGwtPanel vueGwtPanel = new VueGwtPanel(TodoListComponent.class);
+                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponent.class);
 RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
 </code></pre>
         </div>
