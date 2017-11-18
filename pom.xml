@@ -15,8 +15,6 @@
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.8.1</gwtVersion>
 
-        <vue-gwt.version>1.0-beta-3-SNAPSHOT</vue-gwt.version>
-
         <!-- GWT needs at least java 1.7 -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -28,12 +26,12 @@
         <dependency>
             <groupId>com.axellience</groupId>
             <artifactId>vue-gwt</artifactId>
-            <version>${vue-gwt.version}</version>
+            <version>${project.version}</version>
         </dependency>
 		<dependency>
 			<groupId>com.axellience</groupId>
 			<artifactId>vue-gwt-processors</artifactId>
-			<version>${vue-gwt.version}</version>
+			<version>${project.version}</version>
 			<optional>true</optional>
 		</dependency>
 
