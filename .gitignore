@@ -24,5 +24,10 @@ buildNumber.properties
 .idea
 *.iml
 
+### Eclipse files
+.settings
+.classpath
+.project
+
 ### System files
 .DS_Store
