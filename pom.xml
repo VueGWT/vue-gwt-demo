@@ -13,7 +13,7 @@
 
 	<properties>
 		<!-- Convenience property to set the GWT version -->
-		<gwtVersion>2.8.1</gwtVersion>
+		<gwtVersion>2.8.2</gwtVersion>
 
 		<!-- GWT needs at least java 1.7 -->
 		<maven.compiler.source>1.8</maven.compiler.source>
