@@ -110,6 +110,7 @@
 					<keepBranch>false</keepBranch>
 					<skipTestProject>true</skipTestProject>
 					<skipFeatureVersion>true</skipFeatureVersion>
+					<allowSnapshots>true</allowSnapshots>
 				</configuration>
 			</plugin>
 		</plugins>
