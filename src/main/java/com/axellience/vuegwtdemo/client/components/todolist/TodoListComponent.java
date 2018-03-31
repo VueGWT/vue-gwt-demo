@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
-import com.axellience.vuegwt.core.client.component.VueComponent;
+import com.axellience.vuegwt.core.client.component.IsVueComponent;
 import com.axellience.vuegwt.core.annotations.component.Component;
 import com.axellience.vuegwt.core.annotations.component.Computed;
 import jsinterop.annotations.JsMethod;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
 @Component(components = TodoComponent.class)
-public class TodoListComponent extends VueComponent
+public class TodoListComponent implements IsVueComponent
 {
     @JsProperty List<Todo> todos = new LinkedList<>();
     @JsProperty String newTodoText = "";
