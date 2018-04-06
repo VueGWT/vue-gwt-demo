@@ -2,7 +2,6 @@
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module rename-to="VueGwtDemo">
     <inherits name="com.google.gwt.core.Core"/>
-    <inherits name="com.google.gwt.dom.DOM"/>
     <inherits name='com.axellience.vuegwt.VueGWT'/>
 
     <entry-point class='com.axellience.vuegwtdemo.client.VueGwtDemoApp'/>
