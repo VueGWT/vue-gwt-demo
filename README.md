@@ -13,3 +13,5 @@ It may still contain some bugs.
 
 > We are looking for feedback and contributions.
 If you use it on a small project, please [let us know how it goes](https://gitter.im/Axellience/vue-gwt).
+
+You can build (`mvn package`) and run (`mvn gwt:devmode`) the demo application using Maven.
