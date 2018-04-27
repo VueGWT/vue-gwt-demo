@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.highlight;
 
-import com.google.gwt.dom.client.Element;
+import elemental2.dom.Element;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
