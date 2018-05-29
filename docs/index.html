@@ -83,7 +83,7 @@
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@Component
-public class CounterComponent extends VueComponent {
+public class CounterComponent implements IsVueComponent {
     @JsProperty int counterValue = 0;
 }</code></pre>
         </div>
@@ -137,7 +137,7 @@ public class CounterComponent extends VueComponent {
  * Is able to list some todo, mark them as done, remove done todos or all at the same time.
  */
 @Component(components = { TodoComponent.class })
-public class TodoListComponent extends VueComponent {
+public class TodoListComponent implements IsVueComponent {
     @JsProperty List<Todo> todos = new LinkedList<>();
     @JsProperty String newTodoText = "";
 
@@ -191,7 +191,7 @@ public class TodoListComponent extends VueComponent {
         </div>
         <div class="col s12 l6">
             <pre><code class="java">@Component
-public class TodoComponent extends VueComponent {
+public class TodoComponent implements IsVueComponent {
     @Prop
     @JsProperty
     Todo todo;
@@ -201,7 +201,7 @@ public class TodoComponent extends VueComponent {
      */
     @JsMethod
     public void removeTodo() {
-        this.$emit("removeTodo", todo);
+        vue().$emit("removeTodo", todo);
     }
 
     @Computed

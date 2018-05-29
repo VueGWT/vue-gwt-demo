@@ -1,6 +1,6 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
-import com.axellience.vuegwt.core.client.component.VueComponent;
+import com.axellience.vuegwt.core.client.component.IsVueComponent;
 import com.axellience.vuegwt.core.annotations.component.Component;
 import com.axellience.vuegwt.core.annotations.component.Computed;
 import com.axellience.vuegwt.core.annotations.component.Prop;
@@ -11,7 +11,7 @@ import jsinterop.annotations.JsProperty;
  * Display a Todo
  */
 @Component
-public class TodoComponent extends VueComponent
+public class TodoComponent implements IsVueComponent
 {
     @Prop
     @JsProperty
@@ -23,7 +23,7 @@ public class TodoComponent extends VueComponent
     @JsMethod
     public void removeTodo()
     {
-        this.$emit("removeTodo", todo);
+        vue().$emit("removeTodo", todo);
     }
 
     @Computed
