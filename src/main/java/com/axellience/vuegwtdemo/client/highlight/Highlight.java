@@ -5,7 +5,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "hljs")
-public class Highlight
-{
-    public static native void highlightBlock(Element element);
+public class Highlight {
+
+  public static native void highlightBlock(Element element);
 }
