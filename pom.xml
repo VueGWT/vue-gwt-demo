@@ -292,11 +292,11 @@
 								<argument>-entrypoint</argument>
 								<argument>com.axellience.vuegwtdemo.client.VueGwtDemoApp</argument>
 								<argument>-entrypoint</argument>
-								<argument>VueGWTComponents.com.axellience.vuegwtdemo.client.components.todolist.TodoComponent.ExposedTypeConstructorFn</argument>
+								<argument>VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoComponent</argument>
 								<argument>-entrypoint</argument>
-								<argument>VueGWTComponents.com.axellience.vuegwtdemo.client.components.todolist.TodoListComponent.ExposedTypeConstructorFn</argument>
+								<argument>VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoListComponent</argument>
 								<argument>-entrypoint</argument>
-								<argument>VueGWTComponents.com.axellience.vuegwtdemo.client.components.counter.CounterComponent.ExposedTypeConstructorFn</argument>
+								<argument>VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_counter_CounterComponent</argument>
 							</arguments>
 						</configuration>
 						<dependencies>
