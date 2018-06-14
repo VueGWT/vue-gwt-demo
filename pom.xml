@@ -8,7 +8,7 @@
 	<groupId>com.axellience</groupId>
 	<artifactId>vue-gwt-demo</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-beta-8-SNAPSHOT</version>
+	<version>1.0-beta-8</version>
 	<name>Vue GWT demo project</name>
 
 	<properties>
@@ -21,6 +21,26 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>vertispan-releases</id>
+			<name>Vertispan hosted artifacts-releases</name>
+			<url>https://repo.vertispan.com/j2cl</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>vertispan-snapshots</id>
+			<name>Vertispan hosted artifacts-snapshots</name>
+			<url>https://repo.vertispan.com/j2cl</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<dependencies>
 		<dependency>
@@ -49,6 +69,11 @@
 			<version>${project.version}</version>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0</version>
+		</dependency>
 
 		<!--<dependency>-->
 			<!--<groupId>com.google.gwt</groupId>-->
@@ -68,6 +93,19 @@
 		<repository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>vertispan-releases</id>
+			<name>Vertispan hosted artifacts-releases</name>
+			<url>https://repo.vertispan.com/j2cl</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>vertispan-snapshots</id>
+			<name>Vertispan hosted artifacts-snapshots</name>
+			<url>https://repo.vertispan.com/j2cl</url>
 		</repository>
 	</repositories>
 

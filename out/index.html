@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <title>Vue JS Demo</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Materialize Javascript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+
+<body>
+<nav>
+  <div class="nav-wrapper purple">
+    <a class="brand-logo">Vue GWT Demo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="https://github.com/Axellience/vue-gwt-demo">View on Github</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4>Counter Component</h4>
+      <p class="description">
+        Vue GWT let your write <a href="https://vuejs.org/" target="_blank">Vue.js</a> with Java
+        controllers.
+        Bellow you will see a simple example.
+        Try clicking on the buttons to see the reactions.
+      </p>
+    </div>
+    <div class="col s12 center">
+      <div id="simpleCounterComponentContainer"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4>Todo List component</h4>
+      <p class="description">
+        This example is mandatory when showing a new front-end framework, so here is a Todo List
+        written with Vue GWT.
+        <br>
+        This Todo list is composed of 2 Components:
+        <strong>TodoListComponent</strong> that manage the list of todos and
+        <strong>TodoComponent</strong> that displays a single Todo.
+      </p>
+    </div>
+    <div class="col s12 m6 push-m3 l4 push-l4">
+      <div id="todoListComponentContainer"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .isDone label {
+    text-decoration: line-through;
+  }
+
+  p.description {
+    color: #666666;
+  }
+
+  code {
+    position: relative;
+  }
+
+  code.html:after,
+  code.java:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #CCCCCC;
+    text-align: right;
+    font-size: 1em;
+    padding: 5px 10px 0;
+    line-height: 15px;
+    height: 15px;
+    font-weight: 600;
+  }
+
+  code.html:after {
+    content: 'HTML';
+  }
+
+  code.java:after {
+    content: 'JAVA';
+  }
+</style>
+
+<script type="text/javascript" language="javascript" src="app.js"></script>
+</body>
+</html>
