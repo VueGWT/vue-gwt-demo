@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axellience</groupId>
   <artifactId>vue-gwt-demo</artifactId>
-  <packaging>gwt-app</packaging>
+  <packaging>war</packaging>
   <version>1.0-beta-9-SNAPSHOT</version>
   <name>Vue GWT demo project</name>
 
@@ -22,11 +22,46 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>vertispan-releases</id>
+      <name>Vertispan hosted artifacts-releases</name>
+      <url>https://repo.vertispan.com/j2cl</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>vertispan-snapshots</id>
+      <name>Vertispan hosted artifacts-snapshots</name>
+      <url>https://repo.vertispan.com/j2cl</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
   <dependencies>
     <dependency>
       <groupId>com.axellience</groupId>
       <artifactId>vue-gwt</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.google.jsinterop</groupId>
+          <artifactId>base</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.google.gwt</groupId>
+          <artifactId>gwt-user</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.vertispan.jsinterop</groupId>
+      <artifactId>base</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.axellience</groupId>
@@ -34,23 +69,43 @@
       <version>${project.version}</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>8.0</version>
+    </dependency>
 
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <version>${gwt.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-dev</artifactId>
-      <version>${gwt.version}</version>
-    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>com.google.gwt</groupId>-->
+    <!--<artifactId>gwt-user</artifactId>-->
+    <!--<version>${gwt.version}</version>-->
+    <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>com.google.gwt</groupId>-->
+    <!--<artifactId>gwt-dev</artifactId>-->
+    <!--<version>${gwt.version}</version>-->
+    <!--<scope>provided</scope>-->
+    <!--</dependency>-->
   </dependencies>
 
   <repositories>
     <repository>
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+    <repository>
+      <id>vertispan-releases</id>
+      <name>Vertispan hosted artifacts-releases</name>
+      <url>https://repo.vertispan.com/j2cl</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>vertispan-snapshots</id>
+      <name>Vertispan hosted artifacts-snapshots</name>
+      <url>https://repo.vertispan.com/j2cl</url>
     </repository>
   </repositories>
 
@@ -59,50 +114,28 @@
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes
     </outputDirectory>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>net.ltgt.gwt.maven</groupId>
-          <artifactId>gwt-maven-plugin</artifactId>
-          <version>1.0-rc-9</version>
-          <extensions>true</extensions>
-          <configuration>
-            <skipModule>true</skipModule>
-            <failOnError>true</failOnError>
-            <compilerArgs>
-              <arg>-generateJsInteropExports</arg>
-              <arg>-XdisableUpdateCheck</arg>
-            </compilerArgs>
-            <useCompilerArgsForTests>true</useCompilerArgsForTests>
-            <codeserverArgs>
-              <arg>-generateJsInteropExports</arg>
-              <arg>-XdisableUpdateCheck</arg>
-              <arg>-bindAddress</arg>
-              <arg>0.0.0.0</arg>
-            </codeserverArgs>
-            <devmodeArgs>
-              <arg>-generateJsInteropExports</arg>
-              <arg>-XdisableUpdateCheck</arg>
-              <arg>-bindAddress</arg>
-              <arg>0.0.0.0</arg>
-            </devmodeArgs>
-            <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
-      <!-- Maven Plugin for GWT -->
+      <!-- Mojo's Maven Plugin for GWT -->
       <plugin>
-        <groupId>net.ltgt.gwt.maven</groupId>
+        <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.8.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>generateAsync</goal>
+            </goals>
+          </execution>
+        </executions>
         <!-- Plugin configuration. There are many available options, see
           gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
-          <moduleName>com.axellience.vuegwtdemo.VueGwtDemo</moduleName>
-          <startupUrls>
-            <url>VueGwtDemo</url>
-          </startupUrls>
+          <runTarget>index.html</runTarget>
+          <modules>
+            <module>com.axellience.vuegwtdemo.VueGwtDemo</module>
+          </modules>
+          <generateJsInteropExports>true</generateJsInteropExports>
         </configuration>
       </plugin>
 
@@ -154,6 +187,139 @@
             </includes>
           </resource>
         </resources>
+      </build>
+    </profile>
+
+    <profile>
+      <id>devmode</id>
+      <build>
+        <defaultGoal>process-classes</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.0.2</version>
+            <executions>
+              <execution>
+                <id>build-java-classpath</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>build-classpath</goal>
+                </goals>
+                <configuration>
+                  <includeTypes>jar</includeTypes>
+                  <outputProperty>java-classpath</outputProperty>
+                </configuration>
+              </execution>
+              <execution>
+                <id>copy-bootstrap</id>
+                <goals>
+                  <goal>copy</goal>
+                </goals>
+                <configuration>
+                  <!--<artifact>com.vertispan.j2cl:bootstrap:0.1-SNAPSHOT:zip:jszip</artifact>-->
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.vertispan.j2cl</groupId>
+                      <artifactId>jre</artifactId>
+                      <version>0.1-SNAPSHOT</version>
+                      <classifier>jszip</classifier>
+                      <type>zip</type>
+                      <destFileName>jre.js.zip</destFileName>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>com.vertispan.j2cl</groupId>
+                      <artifactId>jre</artifactId>
+                      <version>0.1-SNAPSHOT</version>
+                      <destFileName>jre.jar</destFileName>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>com.vertispan.j2cl</groupId>
+                      <artifactId>gwt-internal-annotations</artifactId>
+                      <version>0.1-SNAPSHOT</version>
+                      <destFileName>gwt-internal-annotations.jar</destFileName>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>com.vertispan.j2cl</groupId>
+                      <artifactId>bootstrap</artifactId>
+                      <version>0.1-SNAPSHOT</version>
+                      <classifier>jszip</classifier>
+                      <type>zip</type>
+                      <destFileName>bootstrap.js.zip</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
+
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <executions>
+              <execution>
+                <id>run-devmode</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <includeProjectDependencies>false</includeProjectDependencies>
+              <includePluginDependencies>true</includePluginDependencies>
+              <!--<executableDependency>-->
+              <!--<groupId>com.vertispan.j2cl</groupId>-->
+              <!--<artifactId>build-tools</artifactId>-->
+              <!--</executableDependency>-->
+              <includeProjectDependencies>false</includeProjectDependencies>
+              <mainClass>com.vertispan.j2cl.DevMode</mainClass>
+              <arguments>
+                <argument>-declarelegacynamespaces</argument>
+                <argument>-classpath</argument>
+                <argument>
+                  ${java-classpath}:${project.build.directory}/dependency/jre.jar:${project.build.directory}/dependency/gwt-internal-annotations.jar
+                </argument>
+                <argument>-jsClasspath</argument>
+                <argument>
+                  ${project.build.directory}/dependency/bootstrap.js.zip:${project.build.directory}/dependency/jre.js.zip
+                </argument>
+                <argument>-out</argument>
+                <argument>out</argument>
+                <argument>-classes</argument>
+                <argument>${project.build.directory}/${project.build.finalName}/WEB-INF/classes
+                </argument>
+                <argument>-src</argument>
+                <argument>src/main/java</argument>
+                <argument>-jsZipCache</argument>
+                <argument>jsZipCache</argument>
+                <argument>-entrypoint</argument>
+                <argument>com.axellience.vuegwtdemo.client.VueGwtDemoApp</argument>
+                <argument>-entrypoint</argument>
+                <argument>
+                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoComponent
+                </argument>
+                <argument>-entrypoint</argument>
+                <argument>
+                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoListComponent
+                </argument>
+                <argument>-entrypoint</argument>
+                <argument>
+                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_counter_CounterComponent
+                </argument>
+              </arguments>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>com.vertispan.j2cl</groupId>
+                <artifactId>build-tools</artifactId>
+                <version>0.1-SNAPSHOT</version>
+                <type>jar</type>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
       </build>
     </profile>
   </profiles>
