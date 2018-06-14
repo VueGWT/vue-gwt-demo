@@ -31,3 +31,7 @@ buildNumber.properties
 
 ### System files
 .DS_Store
+
+### J2CL Files
+jsZipCache
+out
