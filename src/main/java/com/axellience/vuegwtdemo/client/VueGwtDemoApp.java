@@ -2,8 +2,8 @@ package com.axellience.vuegwtdemo.client;
 
 import com.axellience.vuegwt.core.client.Vue;
 import com.axellience.vuegwt.core.client.VueGWT;
-import com.axellience.vuegwtdemo.client.components.counter.CounterComponent;
-import com.axellience.vuegwtdemo.client.components.todolist.TodoListComponent;
+import com.axellience.vuegwtdemo.client.components.counter.CounterComponentFactory;
+import com.axellience.vuegwtdemo.client.components.todolist.TodoListComponentFactory;
 import com.google.gwt.core.client.EntryPoint;
 
 /**
@@ -17,8 +17,7 @@ public class VueGwtDemoApp implements EntryPoint {
   public void onModuleLoad() {
     VueGWT.init();
 
-    // Create a simple GWT panel containing a CounterComponent
-    Vue.attach("#simpleCounterComponentContainer", CounterComponent.class);
-    Vue.attach("#todoListComponentContainer", TodoListComponent.class);
+    Vue.attach("#simpleCounterComponentContainer", CounterComponentFactory.get());
+    Vue.attach("#todoListComponentContainer", TodoListComponentFactory.get());
   }
 }
