@@ -296,18 +296,10 @@
                 <argument>jsZipCache</argument>
                 <argument>-entrypoint</argument>
                 <argument>com.axellience.vuegwtdemo.client.VueGwtDemoApp</argument>
-                <argument>-entrypoint</argument>
-                <argument>
-                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoComponent
-                </argument>
-                <argument>-entrypoint</argument>
-                <argument>
-                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_todolist_TodoListComponent
-                </argument>
-                <argument>-entrypoint</argument>
-                <argument>
-                  VueGWTExposedTypesRepository.com_axellience_vuegwtdemo_client_components_counter_CounterComponent
-                </argument>
+                <argument>--compilation_level</argument>
+                <argument>ADVANCED_OPTIMIZATIONS</argument>
+                <argument>--externs</argument>
+                <argument>/Users/adrien/GWT/vue-gwt-demo/vue-externs.js</argument>
               </arguments>
             </configuration>
             <dependencies>
