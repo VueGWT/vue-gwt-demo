@@ -1,5 +1,7 @@
 package com.axellience.vuegwtdemo.client.components.todolist;
 
+import static java.lang.Math.toIntExact;
+
 import com.axellience.vuegwt.core.annotations.component.Component;
 import com.axellience.vuegwt.core.annotations.component.Computed;
 import com.axellience.vuegwt.core.annotations.component.Data;
@@ -51,11 +53,11 @@ public class TodoListComponent implements IsVueComponent {
    * @return The number of todos that are done
    */
   @Computed
-  public long getDoneTodos() {
+  public int getDoneTodos() {
     if (this.todos == null) {
       return 0;
     }
 
-    return this.todos.stream().filter(Todo::isDone).count();
+    return toIntExact(this.todos.stream().filter(Todo::isDone).count());
   }
 }
