@@ -17,7 +17,7 @@
       Clear Done
     </button>
   </div>
-  <div class="col s12" v-for="Todo todo in todos">
+  <div class="col s12" v-for="Todo todo in todos" :key="todo.getText()">
     <todo v-bind:todo="todo" @removeTodo="removeTodo"/>
   </div>
 </div>
