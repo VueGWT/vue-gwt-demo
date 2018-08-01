@@ -1,158 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-		xmlns="http://maven.apache.org/POM/4.0.0"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.axellience</groupId>
-	<artifactId>vue-gwt-demo</artifactId>
-	<packaging>gwt-app</packaging>
-	<version>1.0-beta-8</version>
-	<name>Vue GWT demo project</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.axellience</groupId>
+  <artifactId>vue-gwt-demo</artifactId>
+  <packaging>gwt-app</packaging>
+  <version>1.0-beta-9</version>
+  <name>Vue GWT demo project</name>
 
-	<properties>
-		<!-- Convenience property to set the GWT version -->
-		<gwt.version>2.8.2</gwt.version>
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwt.version>2.8.2</gwt.version>
 
-		<!-- GWT needs at least java 1.7 -->
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+    <!-- GWT needs at least java 1.7 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.axellience</groupId>
-			<artifactId>vue-gwt</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.axellience</groupId>
-			<artifactId>vue-gwt-processors</artifactId>
-			<version>${project.version}</version>
-			<optional>true</optional>
-		</dependency>
+  <dependencies>
+    <dependency>
+      <groupId>com.axellience</groupId>
+      <artifactId>vue-gwt</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axellience</groupId>
+      <artifactId>vue-gwt-processors</artifactId>
+      <version>${project.version}</version>
+      <optional>true</optional>
+    </dependency>
 
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
-	</dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+  </dependencies>
 
-	<repositories>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</repository>
-	</repositories>
+  <repositories>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
 
-	<build>
-		<!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
-		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes
-		</outputDirectory>
+  <build>
+    <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
+    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes
+    </outputDirectory>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>net.ltgt.gwt.maven</groupId>
-					<artifactId>gwt-maven-plugin</artifactId>
-					<version>1.0-rc-9</version>
-					<extensions>true</extensions>
-					<configuration>
-						<skipModule>true</skipModule>
-						<failOnError>true</failOnError>
-						<compilerArgs>
-							<arg>-generateJsInteropExports</arg>
-							<arg>-XdisableUpdateCheck</arg>
-						</compilerArgs>
-						<useCompilerArgsForTests>true</useCompilerArgsForTests>
-						<codeserverArgs>
-							<arg>-generateJsInteropExports</arg>
-							<arg>-XdisableUpdateCheck</arg>
-							<arg>-bindAddress</arg><arg>0.0.0.0</arg>
-						</codeserverArgs>
-						<devmodeArgs>
-							<arg>-generateJsInteropExports</arg>
-							<arg>-XdisableUpdateCheck</arg>
-							<arg>-bindAddress</arg><arg>0.0.0.0</arg>
-						</devmodeArgs>
-						<style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<!-- Maven Plugin for GWT -->
-			<plugin>
-				<groupId>net.ltgt.gwt.maven</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<!-- Plugin configuration. There are many available options, see
-				  gwt-maven-plugin documentation at codehaus.org -->
-				<configuration>
-					<moduleName>com.axellience.vuegwtdemo.VueGwtDemo</moduleName>
-					<startupUrls>
-						<url>VueGwtDemo</url>
-					</startupUrls>
-				</configuration>
-			</plugin>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>net.ltgt.gwt.maven</groupId>
+          <artifactId>gwt-maven-plugin</artifactId>
+          <version>1.0-rc-9</version>
+          <extensions>true</extensions>
+          <configuration>
+            <skipModule>true</skipModule>
+            <failOnError>true</failOnError>
+            <compilerArgs>
+              <arg>-generateJsInteropExports</arg>
+              <arg>-XdisableUpdateCheck</arg>
+            </compilerArgs>
+            <useCompilerArgsForTests>true</useCompilerArgsForTests>
+            <codeserverArgs>
+              <arg>-generateJsInteropExports</arg>
+              <arg>-XdisableUpdateCheck</arg>
+              <arg>-bindAddress</arg>
+              <arg>0.0.0.0</arg>
+            </codeserverArgs>
+            <devmodeArgs>
+              <arg>-generateJsInteropExports</arg>
+              <arg>-XdisableUpdateCheck</arg>
+              <arg>-bindAddress</arg>
+              <arg>0.0.0.0</arg>
+            </devmodeArgs>
+            <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <!-- Maven Plugin for GWT -->
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <!-- Plugin configuration. There are many available options, see
+          gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <moduleName>com.axellience.vuegwtdemo.VueGwtDemo</moduleName>
+          <startupUrls>
+            <url>VueGwtDemo</url>
+          </startupUrls>
+        </configuration>
+      </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- version is important to have java annotation processing correctly handled -->
-				<version>3.3</version><!--$NO-MVN-MAN-VER$-->
-				<configuration>
-					<compilerArgument>-parameters</compilerArgument>
-					<testCompilerArgument>-parameters</testCompilerArgument>
-					<useIncrementalCompilation>false</useIncrementalCompilation>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <!-- version is important to have java annotation processing correctly handled -->
+        <version>3.3</version><!--$NO-MVN-MAN-VER$-->
+        <configuration>
+          <compilerArgument>-parameters</compilerArgument>
+          <testCompilerArgument>-parameters</testCompilerArgument>
+          <useIncrementalCompilation>false</useIncrementalCompilation>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
 
-			<plugin>
-				<groupId>com.amashchenko.maven.plugin</groupId>
-				<artifactId>gitflow-maven-plugin</artifactId>
-				<version>1.9.0</version>
-				<configuration>
-					<pushRemote>true</pushRemote>
-					<keepBranch>false</keepBranch>
-					<skipTestProject>true</skipTestProject>
-					<skipFeatureVersion>true</skipFeatureVersion>
-					<allowSnapshots>true</allowSnapshots>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+      <plugin>
+        <groupId>com.amashchenko.maven.plugin</groupId>
+        <artifactId>gitflow-maven-plugin</artifactId>
+        <version>1.9.0</version>
+        <configuration>
+          <pushRemote>true</pushRemote>
+          <keepBranch>false</keepBranch>
+          <skipTestProject>true</skipTestProject>
+          <skipFeatureVersion>true</skipFeatureVersion>
+          <allowSnapshots>true</allowSnapshots>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-	<profiles>
-		<profile>
-			<id>vue-gwt-resources</id>
-			<activation>
-				<property>
-					<name>!m2e.version</name>
-				</property>
-			</activation>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/main/java</directory>
-						<includes>
-							<include>
-								**/*.html
-							</include>
-						</includes>
-					</resource>
-				</resources>
-			</build>
-		</profile>
-	</profiles>
+  <profiles>
+    <profile>
+      <id>vue-gwt-resources</id>
+      <activation>
+        <property>
+          <name>!m2e.version</name>
+        </property>
+      </activation>
+      <build>
+        <resources>
+          <resource>
+            <directory>src/main/java</directory>
+            <includes>
+              <include>
+                **/*.html
+              </include>
+            </includes>
+          </resource>
+        </resources>
+      </build>
+    </profile>
+  </profiles>
 </project>
