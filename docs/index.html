@@ -86,7 +86,7 @@
     <div class="col s12 l6">
             <pre><code class="java">@Component
 public class CounterComponent implements IsVueComponent {
-    @JsProperty int counterValue = 0;
+    @Data int counterValue = 0;
 }</code></pre>
     </div>
   </div>
@@ -141,8 +141,8 @@ public class CounterComponent implements IsVueComponent {
  */
 @Component(components = { TodoComponent.class })
 public class TodoListComponent implements IsVueComponent {
-    @JsProperty List<Todo> todos = new LinkedList<>();
-    @JsProperty String newTodoText = "";
+    @Data @JsProperty List<Todo> todos = new LinkedList<>();
+    @Data String newTodoText = "";
 
     @JsMethod
     public void addTodo() {
@@ -195,9 +195,7 @@ public class TodoListComponent implements IsVueComponent {
     <div class="col s12 l6">
             <pre><code class="java">@Component
 public class TodoComponent implements IsVueComponent {
-    @Prop
-    @JsProperty
-    Todo todo;
+    @Prop Todo todo;
 
     /**
      * Emit an event when we want to delete the todo
@@ -266,7 +264,7 @@ public class TodoComponent implements IsVueComponent {
     </div>
     <div class="col s12">
             <pre>
-                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponent.class);
+                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponentFactory.get());
 RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
 </code></pre>
     </div>
