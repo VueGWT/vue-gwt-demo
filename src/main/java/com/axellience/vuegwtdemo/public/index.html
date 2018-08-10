@@ -266,8 +266,8 @@ public class TodoComponent implements IsVueComponent {
     </div>
     <div class="col s12">
             <pre>
-                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponent.class);
-RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
+                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponentFactory.get());
+RootPanel.get("todoListComponentContainer").add(vueGwtWidget);
 </code></pre>
     </div>
   </div>
