@@ -1,6 +1,6 @@
 # Vue GWT Demo
 
-Simple demo GWT app using [Vue GWT](https://github.com/Axellience/vue-gwt).
+Simple demo GWT app using [Vue GWT](https://github.com/VueGWT/vue-gwt).
 
 Vue GWT integrates [Vue.js](https://vuejs.org/) with [GWT](http://www.gwtproject.org/) 2.8 using [JsInterop](https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/view).
 
@@ -12,6 +12,6 @@ This demo uses [Materialize](http://materializecss.com) for the style, but you c
 It may still contain some bugs.
 
 > We are looking for feedback and contributions.
-If you use it on a small project, please [let us know how it goes](https://gitter.im/Axellience/vue-gwt).
+If you use it on a small project, please [let us know how it goes](https://gitter.im/VueGWT/vue-gwt).
 
 You can build (`mvn package`) and run (`mvn gwt:devmode`) the demo application using Maven.
