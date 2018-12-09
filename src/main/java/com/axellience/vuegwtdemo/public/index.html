@@ -20,7 +20,7 @@
   <script
       src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-  <!-- Syntax higlhlight -->
+  <!-- Syntax highlight -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -52,7 +52,7 @@
       </p>
       <p class="flow-text">
         To get more details and get started take a look at our
-        <a href="https://axellience.github.io/vue-gwt/" target="_blank">Documentation</a>.
+        <a href="https://vuegwt.github.io/vue-gwt/guide/" target="_blank">Documentation</a>.
       </p>
     </div>
   </div>
@@ -61,9 +61,9 @@
     <div class="col s12">
       <h4>Counter Component</h4>
       <p class="description">
-        Vue GWT let your write <a href="https://vuejs.org/" target="_blank">Vue.js</a> with Java
+        Vue GWT let you write <a href="https://vuejs.org/" target="_blank">Vue.js</a> with Java
         controllers.
-        Bellow you will see a simple example.
+        Below you will see a simple example.
         Try clicking on the buttons to see the reactions.
       </p>
     </div>
@@ -258,7 +258,7 @@ public class TodoComponent implements IsVueComponent {
         Vue App without having to rewrite anything.
         <br>
         This is method is used for the todo list component above.
-        You can see the Java code to instantiate and attach the component bellow:
+        You can see the Java code to instantiate and attach the component below:
       </p>
       <p class="description">
 
@@ -266,8 +266,8 @@ public class TodoComponent implements IsVueComponent {
     </div>
     <div class="col s12">
             <pre>
-                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponent.class);
-RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
+                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponentFactory.get());
+RootPanel.get("todoListComponentContainer").add(vueGwtWidget);
 </code></pre>
     </div>
   </div>

@@ -20,7 +20,7 @@
   <script
       src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-  <!-- Syntax higlhlight -->
+  <!-- Syntax highlight -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -61,9 +61,9 @@
     <div class="col s12">
       <h4>Counter Component</h4>
       <p class="description">
-        Vue GWT let your write <a href="https://vuejs.org/" target="_blank">Vue.js</a> with Java
+        Vue GWT let you write <a href="https://vuejs.org/" target="_blank">Vue.js</a> with Java
         controllers.
-        Bellow you will see a simple example.
+        Below you will see a simple example.
         Try clicking on the buttons to see the reactions.
       </p>
     </div>
@@ -86,7 +86,7 @@
     <div class="col s12 l6">
             <pre><code class="java">@Component
 public class CounterComponent implements IsVueComponent {
-    @JsProperty int counterValue = 0;
+    @Data int counterValue = 0;
 }</code></pre>
     </div>
   </div>
@@ -141,8 +141,8 @@ public class CounterComponent implements IsVueComponent {
  */
 @Component(components = { TodoComponent.class })
 public class TodoListComponent implements IsVueComponent {
-    @JsProperty List<Todo> todos = new LinkedList<>();
-    @JsProperty String newTodoText = "";
+    @Data @JsProperty List<Todo> todos = new LinkedList<>();
+    @Data String newTodoText = "";
 
     @JsMethod
     public void addTodo() {
@@ -195,9 +195,7 @@ public class TodoListComponent implements IsVueComponent {
     <div class="col s12 l6">
             <pre><code class="java">@Component
 public class TodoComponent implements IsVueComponent {
-    @Prop
-    @JsProperty
-    Todo todo;
+    @Prop Todo todo;
 
     /**
      * Emit an event when we want to delete the todo
@@ -266,8 +264,8 @@ public class TodoComponent implements IsVueComponent {
     </div>
     <div class="col s12">
             <pre>
-                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponent.class);
-RootPanel.get("todoListComponentContainer").add(vueGwtPanel);
+                <code class="java">VueGwtWidget vueGwtWidget = new VueGwtWidget(TodoListComponentFactory.get());
+RootPanel.get("todoListComponentContainer").add(vueGwtWidget);
 </code></pre>
     </div>
   </div>
