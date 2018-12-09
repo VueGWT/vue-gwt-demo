@@ -1,6 +1,7 @@
 var Vue = {
   "cid": {},
   "_uid": "",
+  $options: {},
   "compile": function () {
   },
   "component": function () {
@@ -229,3 +230,4 @@ var VueObserver = {
     }
   }
 };
+var F = {v: function () {}, e: function () {}};
