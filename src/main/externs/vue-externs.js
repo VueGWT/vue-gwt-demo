@@ -221,7 +221,6 @@ Vue.prototype = {
   "_update": function () {
   }
 };
-var VueCustomElement = {};
 var VueObserver = {
   "observeArray": function () {
   },
@@ -231,3 +230,4 @@ var VueObserver = {
   }
 };
 var F = {v: function () {}, e: function () {}};
+goog.module("VueCustomElement");
