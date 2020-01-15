@@ -69,6 +69,30 @@
     </repository>
   </repositories>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>vertispan-gwt</id>
+      <name>Vertispan Snapshots</name>
+      <url>https://repo.vertispan.com/gwt-snapshot/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <!--<updatePolicy>always</updatePolicy>-->
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>vertispan-j2cl</id>
+      <name>Vertispan hosted artifacts-releases</name>
+      <url>https://repo.vertispan.com/j2cl</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
   <build>
     <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes
