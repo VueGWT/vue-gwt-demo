@@ -89,9 +89,6 @@
         </executions>
         <configuration>
           <entrypoint>com.axellience.vuegwtdemo.client.VueGwtDemoApp</entrypoint>
-          <externs>
-            <extern>src/main/externs/vue-externs.js</extern>
-          </externs>
           <initialScriptFilename>VueGwtDemo.nocache.js</initialScriptFilename>
           <!--<compilationLevel>BUNDLE</compilationLevel>-->
         </configuration>
